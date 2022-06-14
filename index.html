@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div class="container d-flex justify-content-between">
+        <form class="row mt-5 main-container justify-content-center flex-column w-75 me-5 container form-wrapper pt-4 pb-4">
+            <div class="border form-top-wrapper mb-3">
+                <div class="d-flex align-items-center mt-3 w-100 mb-2 m-auto">
+                    <div class="col-9 me-auto">
+                        <input class="form-control bg-secondary" type="text" placeholder="Movies">
+                    </div>
+                    <button class="btn btn-success col-2">Add</button>
+                </div>
+                <div class="d-flex align-items-center mt-3 w-100 mb-2 m-auto">
+                    <div class="col-9 me-auto">
+                        <input class="form-control bg-secondary" type="text" placeholder="Search movies">
+                    </div>
+                    <button class="btn btn-primary col-2">Search</button>
+                </div>
+                <div class="w-100 m-auto mb-3">
+                    <div class="w-100 mb-2 boxSelects">
+                        <select data-element="sort-type" class="form-select optsGreaterOrLess bg-secondary text-light">
+                            <option disabled selected>Movie genres</option>
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="w-100 mb-2 boxSelects">
+                        <select data-element="sort-type" class="form-select optsGreaterOrLess bg-secondary text-light">
+                            <option disabled selected>Tartiblash</option>
+                            <option value="1">O'sish</option>
+                            <option value="-1">Kamayish</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <select data-element="sort-type" class="form-select moviesOpts bg-secondary text-light">
+                            <option disabled selected>Sortlash turi</option>
+                            <option value="1" class="">Id bo'yicha</option>
+                            <option value="2">Nomi bo'yicha</option>
+                            <option value="3">Yili bo'yicha</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row todo-list w-100 justify-content-center form-inner-wrapper p-2 m-auto"></div>
+        </form>
+        <div class="w-75 mt-auto movies-container">
+            <div data-element="movie-container" class="row g-3 pb-2 movie-container justify-content-center bg-light"></div>
+            <div class="mt-3">
+                <ul class="pagination todo-pagination mb-0 justify-content-center mt-4"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="my-modal">
+        <div class="my-modal-content position-relative border">
+            <!-- Modal content -->
+            <!-- <button type="button" class="btn btn-secondary movie-modal-btn"></button> -->
+        </div>
+    </div>
+
+    <template id="todo-item">
+        <div class="col-12 bg-light todo-inner-item mb-1 border">
+            <div class="todo p-3 d-flex align-items-center justify-content-between border-light">
+                <div class="d-flex align-items-center">
+                    <span class="todo-id fw-bold"></span>
+                    <h3 class="todo-title ms-3 me-3 fs-5 mt-1"></h3>
+                    <span class="todo-year"></span>
+                </div>
+                <button class="btn btn-danger todo-delete-btn" type="reset">Remove</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="pagination-item">
+        <li class="page-item">
+            <a class="page-link" href="#">1</a>
+        </li>
+    </template>
+
+    <template id="movie-item">
+        <div class="col-6 card-items">
+            <div class="card card-inner h-100">
+                <div class="card-img">
+                    <img data-element="movie-img" src="" class="card-image w-100" alt="">
+                </div>
+                <div class="card-body">
+                    <span data-element="movie-id" class="fw-bold text-light"></span>
+                    <span data-element="movie-id-films" class="fw-bold text-light"></span>
+                    <h3 data-element="movie-title" class="card-title fs-4 text-light"></h3>
+                    <h3 data-element="movie-title-films" class="card-title fs-4 text-light"></h3>
+                    <span data-element="movie-year" class="fw-bold me-5 text-light"></span>
+                    <span data-element="movie-year-films" class="fw-bold text-light"></span>
+                    <h5 data-element="movie-type" class="fw-bold text-light"></h5>
+                    <button data-element="movie-info" type="menu" class="movie-info-btn btn btn-info mt-2 text-light ms-3 me-3 bookmark"></button>
+                    <!-- <a type="submit" class="movie-btn btn btn-primary mt-2 me-3">Watch trailer</a> -->
+                    <button data-element="movie-bookmark" type="submit" class="movie-btn btn btn-success mt-2"></button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- //
+    <template id="movie-item-film">
+        <div class="col-6 card-items">
+            <div class="card card-inner h-100">
+                <div class="card-img">
+                    <img data-element="movie-img" src="" class="card-image w-100" alt="">
+                </div>
+                <div class="card-body">
+                    <span data-element="movie-id" class="fw-bold text-light"></span>
+                    <h3 data-element="movie-title" class="card-title fs-4 text-light"></h3>
+                    <span data-element="movie-year" class="fw-bold me-5 text-light"></span>
+                    <h5 data-element="movie-type" class="fw-bold text-light"></h5>
+                    <button data-element="movie-info" type="menu" class="movie-info-btn btn btn-info mt-2 text-light ms-3 me-3 bookmark"></button>
+                    <a type="submit" class="movie-btn btn btn-primary mt-2 me-3">Watch trailer</a>
+                    <button data-element="movie-bookmark" type="submit" class="movie-btn btn btn-success mt-2"></button>
+                </div>
+            </div>
+        </div>
+    </template> -->
+    <template id="modal-template">
+            <img src="" alt="" class="movie-modal-img">
+            <span class="movie-modal-id text-black"></span>
+            <h3 class="movie-modal-title"></h3>
+            <h4 class="movie-modal-director"></h4>
+            <h5 class="movie-modal-actors"></h5>
+            <p class="movie-modal-genres"></p>
+            <p class="movie-modal-description"></p>
+            <button type="button" class="btn btn-secondary movie-modal-btn">Close</button>
+            <span class="movie-modal-year"></spsan>
+    </template>
+    <!-- <script src="./js/http.js"></script> -->
+    <script src="./js/movies.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
